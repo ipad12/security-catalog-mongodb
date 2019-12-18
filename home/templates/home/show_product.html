@@ -1,0 +1,44 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<main role="main" class="col-md-auto col-sm-auto col-lg-auto px-auto">
+
+
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">{{ solution.solution_name }}</h1>
+            <p class="lead text-muted">{{ solution.solution_desc }}</p>
+        </div>
+    </section>
+    <div class="album py-5 bg-light container-fluid">
+        <div class="container-fluid">
+            <div class="row">
+
+                {% if product_list %}
+                {% for product in solution.product_set.all %}
+
+                <div class="card mb-auto shadow-sm">
+                    <img src={% static "images/placeholder.png" %} alt="My image">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-secondary" href="{{ product.id }}" role="button">View</a></p>
+                            </div>
+                            <small class="text-muted">{{ product.product_name }}</small>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

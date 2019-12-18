@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<head>
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/album.css' %}" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/home/">Security Solutions</a>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/admin/">Admin</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto col-md-auto col-lg-auto mr-auto">
+                <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
+                    <div class="sidebar-sticky">
+                        {% if generic_list %}
+                        <ul class="nav flex-column">
+                            {% for generic in generic_list %}
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="/home/{{ generic.id }}/">{{ generic.generic_name }}</a>
+                            </li>
+                            <hr>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% else %}
+                    <p> No generics to show.</p>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+
+</body>
+
+</html>

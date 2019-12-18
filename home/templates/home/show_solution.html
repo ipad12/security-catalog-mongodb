@@ -1,0 +1,23 @@
+{% extends 'home/index.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<main role="main">
+    <div class="container-fluid">
+        <!-- Example row of columns -->
+        <div class="container-fluid">
+            <br>
+        </div>
+        {% for solution in generic.solution_set.all %}
+        <div class="container">
+            <h4>{{ solution.solution_name }}</h4>
+            <p> {{ solution.solution_desc }}</p>
+            <p><a class="btn btn-secondary" href="{{ solution.id }}" role="button">View Products &raquo;</a></p>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+</main>
+
+
+{% endblock %}
